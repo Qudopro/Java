@@ -2,7 +2,6 @@ package com.qudopro.ch16;
 
 import java.util.Arrays;
 import java.util.LinkedList;
-
 public class ArraysToList {
     public static void main(String[] args){
         //Convertir arreglo en lista
