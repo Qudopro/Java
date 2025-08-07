@@ -18,10 +18,10 @@ public class Producer implements Runnable{
         for(int i = 0; i <= 10; i++){
             try{
                 //Sleep 0 to 3 seconds, then place value in Buffer
-                Thread.sleep(generator.nextInt(3000));
+                //Thread.sleep(generator.nextInt(3000));
                 sharedLocation.blockingPut(i);              //Set value in buffer
-                sum += 1;
-                System.out.printf("\t\t\t%2d", sum);
+                //sum += 1;
+                //System.out.printf("\t\t\t%2d", sum);
             }catch (InterruptedException e){
                 Thread.currentThread().interrupt();
             }
