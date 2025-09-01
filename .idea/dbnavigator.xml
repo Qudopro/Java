@@ -27,6 +27,9 @@
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d2c3da5a-1884-4bc1-8a7e-de33256a5b31" dataset="apple.authors" active-filter-id="" />
   </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/src/main/java/com/qudopro/ch29" connection-id="virtual-mysql-connection" session-id="MAIN" current-schema="" />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
