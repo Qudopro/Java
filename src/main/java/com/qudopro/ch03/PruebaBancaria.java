@@ -4,41 +4,47 @@ import java.util.Scanner;
 
 public class PruebaBancaria {
     public static void main(String[] args){
-        incluirSaldos();
-    }
-
-    public static void establecerNombres(){
-        Scanner entrada = new Scanner(System.in);
-
         //Creación de un objeto Cuenta
-        Cuenta cuenta = new Cuenta();
+        Cuenta cuentaBase = new Cuenta();
         Cuenta cuentaAlternativa = new Cuenta("Cabrera");
+        Cuenta cuentaAlternativa2 = new Cuenta("Cabrera", 23.0);
 
-        System.out.printf("El nombre inicial del objeto Cuenta es: %s%n", cuenta.obtenerNombre());
+        mostrarCuenta(cuentaBase);
+        mostrarCuenta(cuentaAlternativa);
+        mostrarCuenta(cuentaAlternativa2);
 
-        System.out.print("Establezca un nombre en el objeto:\t");
-        String nombre = entrada.nextLine();
-        cuenta.establecerNombre(nombre);
-
-        System.out.println();
-
-        System.out.printf("El nombre modificado del objeto Cuenta es: %s%n", cuenta.obtenerNombre());
-        System.out.printf("El nombre modificado del objeto cuentaAlternativa es: %s%n", cuentaAlternativa.obtenerNombre());
     }
 
-    public static void incluirSaldos(){
+    public static void mostrarCuenta(Cuenta cuenta){
         Scanner entrada = new Scanner(System.in);
 
-        Cuenta cuenta1 = new Cuenta("Cabrera", 23.0);
+        if(cuenta.obtenerNombre() == null || cuenta.obtenerNombre().isEmpty()){
+            System.out.print("Establezca un nombre en la cuenta:\t");
+            String nombre = entrada.nextLine();
+            cuenta.establecerNombre(nombre);
+        }
 
-        System.out.printf("Saldo de %s: $%,.2f%n", cuenta1.obtenerNombre(), cuenta1.obtenerSaldo());
+        System.out.println("La cuenta pertenece a: " + cuenta.obtenerNombre());
+        System.out.printf("La cuenta tiene un saldo de: $%,.2f%n", cuenta.obtenerSaldo());
 
         System.out.print("Escriba la cantidad a depositar en la cuenta:\t");
         double montoDeposito = entrada.nextDouble();
 
         System.out.println("\nAgregando el deposito en la cuenta... Por favor, espere");
+        cuenta.depositar(montoDeposito);
 
-        cuenta1.depositar(montoDeposito);
-        System.out.printf("Saldo de %s: $%,.2f%n", cuenta1.obtenerNombre(), cuenta1.obtenerSaldo());
+        System.out.printf("\nAhora la cuenta tiene: $%,.2f%n", cuenta.obtenerSaldo() );
+
+
+        //Retiro de dinero
+        System.out.println("Cuanto desea retirar:\t");
+        double montoRetiro = entrada.nextDouble();
+
+        cuenta.retirar(montoRetiro);
+
+        if(montoRetiro < cuenta.obtenerSaldo())
+            System.out.printf("Se ha efectuado el retiro. Ahora usted tiene: $%,.2f%n", cuenta.obtenerSaldo());
+
+        System.out.println("\\n\\n");
     }
 }

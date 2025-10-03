@@ -36,7 +36,12 @@ public class Cuenta {
         return saldo;
     }
 
-
-
+    public void retirar(double monto){
+        if (monto > saldo){
+            System.out.println("El monto a retirar excede el saldo de la cuenta");
+        }else {
+            saldo = saldo - monto;
+        }
+    }
 
 }
